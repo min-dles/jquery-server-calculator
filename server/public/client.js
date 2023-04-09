@@ -12,6 +12,8 @@ function onReady() {
     $('#divide').on('click', chooseOperator);
 }
 
+// function to identify which operator is being chosen for a 
+// given equation that will be submitted to the server
 function chooseOperator(event) {
     console.log(event.target.id);
     activeOperator = event.target.id;
@@ -35,29 +37,30 @@ function chooseOperator(event) {
 function getHistory() {
     $.ajax({
         method: 'GET',
-        url: '/addition',
+        url: '/equations',
     }).then(
         function (response) {
             console.log(response);
-            let addHistory = response;
+            let getHistory = response.equations;
             $('#past-calculations').empty();
 
-            for (let line of addHistory) {
+            for (let line of getHistory) {
                 $('#past-calculations').append(`<li>
-                ${line.input1}, 
+                ${line.input1},
+                ${line.operator},
                 ${line.input2}
                 </li>`)
             }
         }
     ).catch(
         function (error) {
-            console.log('something is wrong with GET to /addition');
+            console.log('something is wrong with GET to /equations');
         }
     )
 }
 
-// this function for when '=' button is clicked.. user input submitted/sent
-// to the server for processing
+// this function for when '=' button is clicked.. 
+//user input submitted/sent to the server for processing!!
 function additionRequest(event) {
     console.log('button clicked');
     event.preventDefault();
@@ -73,7 +76,7 @@ function additionRequest(event) {
     $.ajax({
         method: 'POST',
         data: newEquation,
-        url: '/addition',
+        url: '/equations',
     }).then(
         function(response) {
             console.log('POST /addition .then response:', response)

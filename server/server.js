@@ -1,4 +1,4 @@
-const addition = require('./modules/calculator.js');
+const calculator = require('./modules/calculator.js');
 
 
 const express = require('express');
@@ -11,17 +11,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 // GET: you'll see console in terminal when you visit these routes
-app.get('/addition', (req,res) => {
-    res.send(addition.addition);
-    console.log('GET for: /addition', addition.addition);
+app.get('/equations', (req,res) => {
+    res.send(calculator);
+    console.log('GET for: /equations', calculator.equations);
+    console.log('GET for calculator solutions:', calculator.solutions);
 })
 
 // POST:
-app.post('/addition', (req,res) => {
-    console.log('This is POST for /addition');
-    let newAdd = req.body;
-    addition.addition.push(newAdd);
-    res.send('Thanks for the addition input!');
+app.post('/equations', (req,res) => {
+    console.log('This is POST for /equations');
+    let newData = req.body;
+    calculator.equations.push(newData);
+    res.send('Thanks for the equation input!');
 })
 
 app.listen(5000, function() {
