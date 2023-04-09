@@ -46,9 +46,8 @@ function getHistory() {
 
             for (let line of getHistory) {
                 $('#past-calculations').append(`<li>
-                ${line.input1},
-                ${line.operator},
-                ${line.input2}
+                ${line.input1} ${line.operator}
+                ${line.input2} = ${line.solution}
                 </li>`)
             }
         }
