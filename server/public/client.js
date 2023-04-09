@@ -1,9 +1,33 @@
 $(document).ready(onReady);
 
+let activeOperator = '';
+
 function onReady() {
     console.log('client.js is up and running 👾');
     $('#equals').on('click', additionRequest);
     getHistory();
+    $('#add').on('click', chooseOperator);
+    $('#subtract').on('click', chooseOperator);
+    $('#multiply').on('click', chooseOperator);
+    $('#divide').on('click', chooseOperator);
+}
+
+function chooseOperator(event) {
+    console.log(event.target.id);
+    activeOperator = event.target.id;
+    if (activeOperator === 'add') {
+        activeOperator = '+';
+    } else if (activeOperator === 'subtract') {
+        activeOperator = '-';
+    } else if (activeOperator === 'multiply') {
+        activeOperator = '*';
+    } else if (activeOperator === 'divide') {
+        activeOperator = '/';
+    } else {
+        activeOperator = 'error with if/else statement in chooseOperator';
+    }
+    console.log(activeOperator);
+    return activeOperator;
 }
 
 // this function to get call from server for updated data 
@@ -39,6 +63,7 @@ function additionRequest(event) {
     event.preventDefault();
     let newEquation = {
         input1: $('#input1').val(),
+        operator: activeOperator,
         input2: $('#input2').val()
     };
 

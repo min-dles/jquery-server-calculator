@@ -1,3 +1,7 @@
 html {
     background-color: teal;
 }
+
+button:hover {
+    background-color: green;
+}
