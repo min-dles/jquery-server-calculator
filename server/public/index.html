@@ -15,20 +15,25 @@
     </header>
     <main>
         <section id="calculator"></section>
-            <input type="number" />
-            <button>➕</button>
-            <button>➖</button>
-            <button>✖️</button>
-            <button>➗</button>
-            <input type="number" />
-            <button>🟰</button>
+            <input id="input1" type="number" />
+            <button id="add">➕</button>
+            <button id="subtract">➖</button>
+            <button id="multiply">✖️</button>
+            <button id="divide">➗</button>
+            <input id="input2" type="number" />
+            <button id="equals" type="submit">🟰</button>
             <button>𝐂</button>
         </section>
+
+
         <section id="answer">
             <h2>Answer:</h2>
             <div id="solution"></div>
         </section>
+
+
         <section id="history">
+            <h2>Calculator History:</h2>
             <ul id="past-calculations"></ul>
         </section>
     </main>
