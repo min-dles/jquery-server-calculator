@@ -13,15 +13,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 // GET: you'll see console in terminal when you visit these routes
 app.get('/equations', (req,res) => {
     res.send(calculator);
-    console.log('GET for: /equations', calculator.equations);
-    console.log('GET for calculator solutions:', calculator.solutions);
+    console.log('GET for: /equations', calculator.equation);
 })
 
 // POST:
 app.post('/equations', (req,res) => {
     console.log('This is POST for /equations');
     let newData = req.body;
-    calculator.equations.push(newData);
+    calculator.equation.push(newData);
     res.send('Thanks for the equation input!');
 })
 

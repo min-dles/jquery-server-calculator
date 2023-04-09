@@ -41,19 +41,21 @@ function getHistory() {
     }).then(
         function (response) {
             console.log(response);
-            let getHistory = response.equations;
+            let getHistory = response;
             $('#past-calculations').empty();
 
-            for (let line of getHistory) {
+            if (getHistory) {
                 $('#past-calculations').append(`<li>
-                ${line.input1} ${line.operator}
-                ${line.input2} = ${line.solution}
+                ${getHistory.input1} ${getHistory.operator}
+                ${getHistory.input2} = ${getHistory.solution}
                 </li>`)
+            } else {
+                console.log('there is nothing here yet');
             }
         }
     ).catch(
         function (error) {
-            console.log('something is wrong with GET to /equations');
+            console.log('something is wrong with GET to /equations', error);
         }
     )
 }
