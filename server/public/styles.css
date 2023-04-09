@@ -4,6 +4,10 @@ html {
     background-color: #646464;
 }
 
+button, input {
+    padding: 0.8em;
+}
+
 button:hover {
     background-color: rgb(224, 48, 45);
 }

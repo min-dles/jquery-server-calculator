@@ -13,7 +13,15 @@ function getSolution(object){
         solution = Number(object.input1) * Number(object.input2);
     } else if (object.operator === '/'){
         solution = Number(object.input1) / Number(object.input2);
-    } else {
+    } else if (object.input1 === null || object.input2 === null){
+        object = {
+            input1: 0,
+            operator: '+',
+            input2: 0,
+            solution: 0
+        }
+    }
+    else {
         object = 'there is no input yet'
         console.log('This is your current object:', object);
     }
