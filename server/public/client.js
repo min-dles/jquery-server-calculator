@@ -4,12 +4,11 @@ let activeOperator = '';
 
 function onReady() {
     console.log('client.js is up and running 👾');
-    $('#equals').on('click', additionRequest);
-    getHistory();
     $('#add').on('click', chooseOperator);
     $('#subtract').on('click', chooseOperator);
     $('#multiply').on('click', chooseOperator);
     $('#divide').on('click', chooseOperator);
+    $('#equals').on('click', calculate);
 }
 
 // function to identify which operator is being chosen for a 
@@ -41,17 +40,19 @@ function getHistory() {
     }).then(
         function (response) {
             console.log(response);
-            let getHistory = response;
+            let equationsArray = response;
             $('#past-calculations').empty();
+            $('#solution').empty();
 
-            if (getHistory) {
+            for (let equation of equationsArray) {
                 $('#past-calculations').append(`<li>
-                ${getHistory.input1} ${getHistory.operator}
-                ${getHistory.input2} = ${getHistory.solution}
+                ${equation.input1} ${equation.operator}
+                ${equation.input2} = ${equation.solution}
                 </li>`)
-            } else {
-                console.log('there is nothing here yet');
-            }
+            };
+            $('#solution').append(`<span>
+                ${equationsArray[equationsArray.length-1].solution}
+                </span>`);
         }
     ).catch(
         function (error) {
@@ -62,7 +63,7 @@ function getHistory() {
 
 // this function for when '=' button is clicked.. 
 //user input submitted/sent to the server for processing!!
-function additionRequest(event) {
+function calculate(event) {
     console.log('button clicked');
     event.preventDefault();
     let newEquation = {
@@ -85,7 +86,7 @@ function additionRequest(event) {
         }
     ).catch(
         function(error) {
-            console.log('Something wrong w POST request to /addition');
+            console.log('Something wrong w POST request to /equations', error);
         }
     )
 }

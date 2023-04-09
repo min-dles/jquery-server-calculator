@@ -1,8 +1,4 @@
-const equation = {
-    input1: 1,
-    operator: '-',
-    input2: 1
-}
+// const equation = [];
 
 // need to add a new property to existing objects in 'equations' array 
 // Don't need 'solutions' array? Can just access new 'solution' property
@@ -22,10 +18,11 @@ function getSolution(object){
         console.log('This is your current object:', object);
     }
     object.solution = solution;
+    // equation.push(object);
     return object;
 }    
 
-getSolution(equation);
+// getSolution(equation);
 
 // module.exports = { equations, solutions }
-module.exports = equation;
+module.exports = getSolution;
