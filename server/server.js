@@ -12,15 +12,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // GET: you'll see console in terminal when you visit these routes
 app.get('/addition', (req,res) => {
-    res.send(addition);
-    console.log('GET for: /addition');
+    res.send(addition.addition);
+    console.log('GET for: /addition', addition.addition);
 })
 
 // POST:
 app.post('/addition', (req,res) => {
     console.log('This is POST for /addition');
     let newAdd = req.body;
-    addition.push(newAdd);
+    addition.addition.push(newAdd);
     res.send('Thanks for the addition input!');
 })
 

@@ -4,4 +4,11 @@ const addition = [
     { input1: 20, input2: 40 }
 ];
 
-module.exports = addition;
+function additionTest(array){
+    let solution = 0; 
+    solution = Number(array.input1) + Number(array.input2);
+    console.log(solution);
+    return solution;
+}
+
+module.exports = { addition, additionTest }

@@ -6,6 +6,8 @@ function onReady() {
     getHistory();
 }
 
+// this function to get call from server for updated data 
+// and update DOM with the 1. ANSWER, and 2. CALCULATOR HISTORY 
 function getHistory() {
     $.ajax({
         method: 'GET',
@@ -30,6 +32,8 @@ function getHistory() {
     )
 }
 
+// this function for when '=' button is clicked.. user input submitted/sent
+// to the server for processing
 function additionRequest(event) {
     console.log('button clicked');
     event.preventDefault();
