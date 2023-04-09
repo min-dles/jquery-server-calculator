@@ -1,7 +1,13 @@
+/* teal: #07dfdfad */
+
 html {
-    background-color: teal;
+    background-color: #646464;
 }
 
 button:hover {
-    background-color: green;
+    background-color: rgb(224, 48, 45);
+}
+
+body { 
+	font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace; 
 }

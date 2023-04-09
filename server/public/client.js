@@ -21,7 +21,6 @@ function clearInput(){
 // function to identify which operator is being chosen for a 
 // given equation that will be submitted to the server
 function chooseOperator(event) {
-    console.log(event.target.id);
     activeOperator = event.target.id;
     if (activeOperator === 'add') {
         activeOperator = '+';
@@ -34,7 +33,6 @@ function chooseOperator(event) {
     } else {
         activeOperator = 'error with if/else statement in chooseOperator';
     }
-    console.log(activeOperator);
     return activeOperator;
 }
 
@@ -47,6 +45,9 @@ function getHistory() {
     }).then(
         function (response) {
             console.log(response);
+            if (response.length === 0) {
+                return;
+            }
             let equationsArray = response;
             $('#past-calculations').empty();
             $('#solution').empty();
