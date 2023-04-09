@@ -4,11 +4,18 @@ let activeOperator = '';
 
 function onReady() {
     console.log('client.js is up and running 👾');
+    $('#clear-input').on('click', clearInput);
     $('#add').on('click', chooseOperator);
     $('#subtract').on('click', chooseOperator);
     $('#multiply').on('click', chooseOperator);
     $('#divide').on('click', chooseOperator);
     $('#equals').on('click', calculate);
+    getHistory();
+}
+
+function clearInput(){
+    $('#input1').val('');
+    $('#input2').val('');
 }
 
 // function to identify which operator is being chosen for a 
